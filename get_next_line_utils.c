@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:41 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/29 09:14:28 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/29 10:01:07 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ static void	*ft_memcpy(void *dest, const void *src, size_t n)
 		return (0);
 	pdest = (unsigned char *) dest;
 	psrc = (const unsigned char *) src;
+	while (n >= 8)
+	{
+		*(size_t *) pdest = *(size_t *) psrc;
+		pdest += 8;
+		psrc += 8;
+		n -= 8;
+	}
 	while (n--)
 		*pdest++ = *psrc++;
 	return (dest);
