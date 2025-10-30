@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:41 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 13:06:58 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 14:43:00 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,12 @@ size_t	ft_strlen(const char *s)
 	return (ptr - s);
 }
 
-char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE + 1], char **line)
+char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE + 1],
+			char **ptr, char **line)
 {
 	ssize_t	bytes_read;
 
+	*ptr = buffer[fd];
 	if (!*buffer[fd])
 	{
 		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
