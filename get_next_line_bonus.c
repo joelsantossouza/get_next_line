@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:01 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 12:08:25 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:15:14 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ char	*get_next_line(int fd)
 	char		*line;
 	size_t		len;
 
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (0);
 	len = 0;
 	line = 0;
-	while (!end_of_file(fd, buffer[fd], &line))
+	while (!end_of_file(fd, buffer, &line))
 	{
 		ptr = buffer[fd];
 		while (*ptr && *ptr++ != '\n')

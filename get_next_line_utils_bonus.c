@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:41 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 12:09:30 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:13:39 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return ((const char *) psrc - src);
 }
 
-char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE], char **line)
+char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE + 1], char **line)
 {
 	ssize_t	bytes_read;
 

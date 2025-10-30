@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:55 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 11:32:21 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:12:52 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # endif
 
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-char	*ft_strchrnul(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	end_of_file(int fd, char buffer[BUFFER_SIZE], char **ptr, char **line);
 char	*get_next_line(int fd);
