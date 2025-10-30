@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:01 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 12:15:14 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 13:07:49 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_next_line(int fd)
 			return (0);
 		ft_strlcpy(line + len, buffer[fd], (ptr - buffer[fd]) + 1);
 		len += ptr - buffer[fd];
-		ft_memmove(buffer[fd], ptr, (BUFFER_SIZE + 1) - (ptr - buffer[fd]));
+		ft_memmove(buffer[fd], ptr, ft_strlen(ptr) + 1);
 		if (*(ptr - 1) == '\n')
 			break ;
 	}

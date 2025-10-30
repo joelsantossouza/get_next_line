@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:55 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 12:14:02 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 13:07:18 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlen(const char *s);
 char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE + 1], char **line);
 char	*get_next_line(int fd);
 

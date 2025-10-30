@@ -6,7 +6,7 @@
 /*   By: joesanto <joesanto@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 08:45:41 by joesanto          #+#    #+#             */
-/*   Updated: 2025/10/30 12:13:39 by joesanto         ###   ########.fr       */
+/*   Updated: 2025/10/30 13:06:58 by joesanto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,21 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char		*pdest;
-	const unsigned char	*psrc;
-
-	if (!dest || !src)
-		return (0);
-	pdest = (unsigned char *) dest;
-	psrc = (const unsigned char *) src;
-	while (n >= 8)
-	{
-		*(size_t *) pdest = *(size_t *) psrc;
-		pdest += 8;
-		psrc += 8;
-		n -= 8;
-	}
-	while (n--)
-		*pdest++ = *psrc++;
-	return (dest);
-}
-
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char		*pdest;
 	const unsigned char	*psrc;
 
-	if (dest <= src)
-		return (ft_memcpy(dest, src, n));
 	if (!dest || !src)
 		return (0);
 	pdest = (unsigned char *) dest;
 	psrc = (const unsigned char *) src;
-	while (n >= 8)
-	{
-		n -= 8;
-		*(size_t *)(pdest + n) = *(size_t *)(psrc + n);
-	}
-	while (n--)
-		pdest[n] = psrc[n];
+	if (dest <= src)
+		while (n--)
+			*pdest++ = *psrc++;
+	else
+		while (n--)
+			pdest[n] = psrc[n];
 	return (dest);
 }
 
@@ -68,7 +44,7 @@ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 		min = old_size;
 		if (new_size < old_size)
 			min = new_size;
-		ft_memcpy(new, ptr, min);
+		ft_memmove(new, ptr, min);
 	}
 	free(ptr);
 	return (new);
@@ -93,6 +69,18 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 			psrc++;
 	}
 	return ((const char *) psrc - src);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	const char	*ptr;
+
+	if (!s)
+		return (0);
+	ptr = s;
+	while (*ptr)
+		ptr++;
+	return (ptr - s);
 }
 
 char	end_of_file(int fd, char buffer[MAX_FDS][BUFFER_SIZE + 1], char **line)
